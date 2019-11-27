@@ -88,10 +88,10 @@ function simpankeDB(id) {
         store.add(item);
         return tx.complete;
     }).then(function() {
-      M.toast({html: 'Data berhasil disimpan.', classes: 'rounded'});
+      M.toast({html: 'Tim<strong>&nbsp;berhasil ditambah&nbsp;</strong> kedalam favorit.', classes: 'rounded'});
       getTeams();
     }).catch(function() {
-      M.toast({html: 'Data gagal disimpan.', classes: 'rounded'});
+      M.toast({html: 'Tim <strong>&nbsp;gagal ditambah&nbsp;</strong> kedalam favorit.', classes: 'rounded'});
       getTeams();
     })
 }
@@ -105,7 +105,7 @@ function hapusdariDB(id) {
     store.delete(id);
     return tx.complete;
   }).then(function() {
-    M.toast({html: 'Data berhasil dihapus.', classes: 'rounded'});
+    M.toast({html: 'Tim <strong>&nbsp;berhasil dihapus&nbsp;</strong>dari daftar favorit.', classes: 'rounded'});
     lihatdariDB();
     getTeams();
   });
