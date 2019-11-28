@@ -107,7 +107,10 @@ function hapusdariDB(id) {
     return tx.complete;
   }).then(function() {
     M.toast({html: '<p>Tim  berhasil dihapus dari daftar favorit.</p>', classes: 'rounded'});
-    lihatdariDB();
     getTeams();
+    lihatdariDB();
+    
+    // MENGHAPUS PRELOADER
+    document.getElementById("preLoad").innerHTML = "";
   });
 }

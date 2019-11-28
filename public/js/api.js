@@ -95,6 +95,7 @@ function getTeams() {
 
           // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="teams"
           document.getElementById("teams").innerHTML = teamHTML;
+
           // MENGHAPUS PRELOADER
           document.getElementById("preLoad").innerHTML = "";
         });
@@ -142,6 +143,7 @@ function getTeams() {
 
       // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="teams"
       document.getElementById("teams").innerHTML = teamHTML;
+
       // MENGHAPUS PRELOADER
       document.getElementById("preLoad").innerHTML = "";
     })
@@ -207,6 +209,7 @@ function getStanding() {
 
           // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="standings"
           document.getElementById("standings").innerHTML = standingHTML;
+  
           // MENGHAPUS PRELOADER
           document.getElementById("preLoad").innerHTML = "";
         });
@@ -263,6 +266,7 @@ function getStanding() {
 
     // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="standings"
     document.getElementById("standings").innerHTML = standingHTML;
+  
     // MENGHAPUS PRELOADER
     document.getElementById("preLoad").innerHTML = "";
   })
