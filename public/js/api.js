@@ -27,7 +27,7 @@ function error(error) {
 
 // BLOK KODE UNTUK MELAKUKAN Request DATA JSON
 function getTeams() {
-  
+
   var request = new Request(base_url + 'teams', {
     method: 'GET', 
     headers: new Headers({
@@ -42,6 +42,7 @@ function getTeams() {
       
           // MENYUSUN KOMPONEN CARD SECARA DINAMIS
           var teamHTML = "";
+
           for($i=0; $i<data.count; $i++)
           {
             // FUNGSI CEK APAKAH SUDAH TERDAFTAR DALAM FAVORIT
@@ -73,6 +74,8 @@ function getTeams() {
 
           // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="teams"
           document.getElementById("teams").innerHTML = teamHTML;
+          // MENGHAPUS PRELOADER
+          document.getElementById("preLoad").innerHTML = "";
         });
       }
     });
@@ -86,6 +89,7 @@ function getTeams() {
 
       // MENYUSUN KOMPONEN CARD SECARA DINAMIS
       var teamHTML = "";
+
       for($i=0; $i<data.count; $i++)
       {
         //FUNGSI CEK APAKAH SUDAH TERDAFTAR DALAM FAVORIT
@@ -117,11 +121,14 @@ function getTeams() {
 
       // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="teams"
       document.getElementById("teams").innerHTML = teamHTML;
+      // MENGHAPUS PRELOADER
+      document.getElementById("preLoad").innerHTML = "";
     })
     .catch(error);
 }
 
 function getStanding() {
+
   var request = new Request(base_url + 'competitions/2015/standings', {
     method: 'GET', 
     headers: new Headers({
@@ -177,6 +184,8 @@ function getStanding() {
 
           // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="standings"
           document.getElementById("standings").innerHTML = standingHTML;
+          // MENGHAPUS PRELOADER
+          document.getElementById("preLoad").innerHTML = "";
         });
       }
     });
@@ -231,6 +240,8 @@ function getStanding() {
 
     // MENYISIPKAN KOMPONEN CARD KE DALAM ELEMENT DENGAN id="standings"
     document.getElementById("standings").innerHTML = standingHTML;
+    // MENGHAPUS PRELOADER
+    document.getElementById("preLoad").innerHTML = "";
   })
   .catch(error);
 }
