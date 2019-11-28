@@ -1,6 +1,5 @@
 {
     "name": "Aplikasi Sepak Bola",
-    "gcm_sender_id": "409938385405",
     "short_name": "APK Bola",
     "description": "Aplikasi PWA Sepak Bola",
     "start_url": "/index.html",

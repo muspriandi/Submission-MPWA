@@ -10,7 +10,7 @@ var dbPromise = idb.open("db_bola", 1, function(upgradeDb) {
   }
 });
 
-// READ ALL DATA
+// RETRIEVE ALL DATA / MENGAMBIL SELURUH DATA DALAM INDEXED DB UNTUK DITAMPILKAN
 function lihatdariDB() {
   dbPromise.then(function(db) {
     var tx = db.transaction('teams', 'readonly');
@@ -53,11 +53,11 @@ function cekFavorite(idTeam) {
   dbPromise.then(function(db) {
     var tx = db.transaction('teams', 'readonly');
     var store = tx.objectStore('teams');
-    // mengambil primary key berdasarkan idTeam
+    // MENGAMBIL PRIMARY KEY BERDASARKAN idTeam
     return store.get(idTeam); 
   }).then(function(val) {
     if(val != null && val.idTeam == idTeam) {
-      // JIKA TIM TELAH MENJADI FAVORIT, MAKA TOMBOL DI 'DISABLE' DAN EFEK 'PULSE' DIMATIKAN/DIHAPUS
+      // JIKA TIM TELAH MENJADI FAVORIT, AKAN BERUBAH MENJADI TOMBOL '- FAVORITE' ATAU TOMBOL HAPUS FAVORITE
       if(val.idTeam == idTeam) {
         var x = document.getElementById("button"+idTeam);
         x.innerHTML="<button type='button' onclick='hapusdariDB("+idTeam+")' class='waves-effect waves-light btn red' style='position: absolute; left:10%; bottom: 20px; width:80%;'>- Favorite</button>";
@@ -73,7 +73,7 @@ function simpankeDB(id) {
     var c = document.forms["form"+id]["clubColor"].value;
     var d = document.forms["form"+id]["teamLogo"].value;
 
-    //CREATE DATA
+    // INSERT KE DB BERDASARKAN VARIABEL DI ATAS
     dbPromise.then(function(db) {
         var tx = db.transaction('teams', 'readwrite');
         var store = tx.objectStore('teams');
@@ -88,24 +88,25 @@ function simpankeDB(id) {
         store.add(item);
         return tx.complete;
     }).then(function() {
-      M.toast({html: 'Tim<strong>&nbsp;berhasil ditambah&nbsp;</strong> kedalam favorit.', classes: 'rounded'});
+      M.toast({html: '<p>Tim berhasil ditambah  kedalam favorit.</p>', classes: 'rounded'});
       getTeams();
     }).catch(function() {
-      M.toast({html: 'Tim <strong>&nbsp;gagal ditambah&nbsp;</strong> kedalam favorit.', classes: 'rounded'});
+      M.toast({html: '<p>Tim  gagal ditambah  kedalam favorit.</p>', classes: 'rounded'});
       getTeams();
     })
 }
 
-// FUNGSI UNTUK MENGHAPUS RECORD TERTENTU (BERDASARKAN ID) DARI INDEXED DB
+// FUNGSI UNTUK MENGHAPUS RECORD TERTENTU (BERDASARKAN id) DARI INDEXED DB
 function hapusdariDB(id) {
-  // DELETE DATA
+
+  // HAPUS DATA BERDASARKAN id YANG DITERIMA
   dbPromise.then(function(db) {
     var tx = db.transaction('teams', 'readwrite');
     var store = tx.objectStore('teams');
     store.delete(id);
     return tx.complete;
   }).then(function() {
-    M.toast({html: 'Tim <strong>&nbsp;berhasil dihapus&nbsp;</strong>dari daftar favorit.', classes: 'rounded'});
+    M.toast({html: '<p>Tim  berhasil dihapus dari daftar favorit.</p>', classes: 'rounded'});
     lihatdariDB();
     getTeams();
   });
