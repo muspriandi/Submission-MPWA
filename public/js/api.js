@@ -25,8 +25,29 @@ function error(error) {
   console.log("Pastikan anda terhubung ke jaringan internet untuk mengakses data pada API pertama kali.");
 }
 
+// FUNGSI MENJALANKAN PRELOAD
+function preLoad() {
+  var preLoad = 
+  '<div class="preloader-wrapper big active" style="position: relative; left: calc(50% - 30px); top:50%;">'
+    +'<div class="spinner-layer spinner-green-only">'
+      +'<div class="circle-clipper left">'
+        +'<div class="circle"></div>'
+      +'</div>'
+      +'<div class="gap-patch">'
+        +'<div class="circle"></div>'
+      +'</div>'
+      +'<div class="circle-clipper right">'
+        +'<div class="circle"></div>'
+      +'</div>'
+    +'</div>'
+  +'</div>';
+  document.getElementById("preLoad").innerHTML = preLoad;
+}
+
 // BLOK KODE UNTUK MELAKUKAN Request DATA JSON
 function getTeams() {
+  // MENJALANKAN PRELOAD
+  preLoad();
 
   var request = new Request(base_url + 'teams', {
     method: 'GET', 
@@ -128,6 +149,8 @@ function getTeams() {
 }
 
 function getStanding() {
+  // MENJALANKAN PRELOAD
+  preLoad();
 
   var request = new Request(base_url + 'competitions/2015/standings', {
     method: 'GET', 
